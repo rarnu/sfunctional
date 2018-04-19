@@ -1,3 +1,5 @@
+source "https://github.com/rarnu/RarnuSpecs.git"
+
 Pod::Spec.new do |s|
     s.name          = "sfunctional"
     s.version       = "0.1.0"
@@ -5,7 +7,8 @@ Pod::Spec.new do |s|
     s.homepage      = "https://github.com/rarnu/sfunctional"
     s.license       = "MIT"
     s.author        = { "rarnu" => "rarnu1985@gmail.com" }
-    s.platform      = :ios, "8.0"
+    s.platform      = :ios, "10.0"
     s.source        = { :git => "https://github.com/rarnu/sfunctional.git", :tag => "#{s.version}" }
-    s.source_file   = "sfunctional/*.swift", "sfunctional/**/*", "sfunctional/**/**/*"
+    s.source_files  = "sfunctional/*.swift", "sfunctional/**/*", "sfunctional/**/**/*"
+    s.swift_version = "4.1"
 end
