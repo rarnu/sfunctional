@@ -14,6 +14,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        testurl("https://www.baidu.com:1234/uri/suburi?p1=a&p2=b")
+        testurl("https://www.baidu.com:1234/uri/suburi?p1=&p2=b")
+        testurl("https://www.baidu.com/uri/suburi?p1=a&p2=b")
+        testurl("https://www.baidu.com:1234/suburi")
+        testurl("https://www.baidu.com")
+        testurl("www.baidu.com:1234")
+        testurl("www.baidu.com")
+        
+        /*
         let emu = isEmulator()
         print("emu => \(emu)")
         
@@ -52,7 +61,16 @@ class ViewController: UIViewController {
         if (img != nil) {
             print(img!)
         }
+        */
 
+    }
+    
+    private func testurl(_ url: String) {
+        let info = decodeUrl(url)
+        print("info => protocol: \(info.proto), port: \(info.port), host: \(info.host), uri: \(info.uri)")
+        for (k, v) in info.params {
+            print("k: \(k), v: \(v)")
+        }
     }
 
     override func didReceiveMemoryWarning() {
