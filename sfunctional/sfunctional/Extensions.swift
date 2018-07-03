@@ -18,6 +18,10 @@ public extension NSObject {
 }
 
 public extension UIView {
+    func toast(msg: String) {
+        Toast.showToast(message: msg as NSString?)
+    }
+    
     func viewController() -> UIViewController? {
         var result: UIViewController? = nil
         var responder = self.next

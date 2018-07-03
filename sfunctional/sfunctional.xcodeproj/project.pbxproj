@@ -60,6 +60,7 @@
 		92D9447A2069F0B400511EA2 /* BundleUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D944792069F0B400511EA2 /* BundleUtils.swift */; };
 		92D9447C2069F71200511EA2 /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D9447B2069F71200511EA2 /* ImageUtils.swift */; };
 		92E1ED4520AC7A1F00581D8F /* UrlDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E1ED4420AC7A1F00581D8F /* UrlDecoder.swift */; };
+		92F0169F20EB675600E02943 /* ToastUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0169E20EB675600E02943 /* ToastUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +119,7 @@
 		92D944792069F0B400511EA2 /* BundleUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleUtils.swift; sourceTree = "<group>"; };
 		92D9447B2069F71200511EA2 /* ImageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtils.swift; sourceTree = "<group>"; };
 		92E1ED4420AC7A1F00581D8F /* UrlDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlDecoder.swift; sourceTree = "<group>"; };
+		92F0169E20EB675600E02943 /* ToastUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 				9230B34F206A4EB7004D4FE1 /* DatetimeUtils.swift */,
 				9230B351206A4ED4004D4FE1 /* SystemUtils.swift */,
 				92E1ED4420AC7A1F00581D8F /* UrlDecoder.swift */,
+				92F0169E20EB675600E02943 /* ToastUtils.swift */,
 			);
 			path = sfunctional;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				9245F5482068A19600CC45E2 /* aescrypt.c in Sources */,
 				9245F5502068A19600CC45E2 /* prng.c in Sources */,
 				9245F5442068A19600CC45E2 /* aeskey.c in Sources */,
+				92F0169F20EB675600E02943 /* ToastUtils.swift in Sources */,
 				9245F55F2068C8B300CC45E2 /* HttpUtils.swift in Sources */,
 				92E1ED4520AC7A1F00581D8F /* UrlDecoder.swift in Sources */,
 			);

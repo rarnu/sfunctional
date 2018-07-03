@@ -76,6 +76,12 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    @IBAction func btnClicked(sender: Any?) {
+        // TODO:
+        print("6666")
+        self.view.toast(msg: "6666666")
+    }
 
 }
 
