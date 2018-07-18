@@ -62,6 +62,12 @@ class ViewController: UIViewController {
             print(img!)
         }
         */
+        
+        let tb = MyTable(frame: CGRect(x: 0, y: 0, width: screenWidth(), height: screenHeight()))
+        tb.list.append("666")
+        tb.list.append("777")
+        tb.reloadData()
+        self.view.addSubview(tb)
 
     }
     
@@ -78,7 +84,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func btnClicked(sender: Any?) {
-        // TODO:
         print("6666")
         self.view.toast(msg: "6666666")
     }
