@@ -29,11 +29,17 @@ open class AdapterCell<T>: UITableViewCell {
     
     open func layout() {
         // XXX: override your own layout
+        fatalError("Subclasses need to implement the `layout()` method.")
     }
     
-    open func setItem(a: T?) {
+    open func innerSetItem(a: T?) {
         innerItem = a
+        setItem(item: a)
+    }
+
+    open func setItem(item: T?) {
         // XXX: override your own data setter
+        fatalError("Subclasses need to implement the `lasetItemyout()` method.")
     }
     
     public func getItem() -> T? {
@@ -71,6 +77,7 @@ open class AdapterTableView<T>: UITableView, UITableViewDelegate, UITableViewDat
     
     open func register() {
         // XXX: override this, must pass a cell extened AdapterCell
+        fatalError("Subclasses need to implement the `register()` method.")
     }
     
     public func numberOfSections(in tableView: UITableView) -> Int {
@@ -83,7 +90,7 @@ open class AdapterTableView<T>: UITableView, UITableViewDelegate, UITableViewDat
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CELLNAME, for: indexPath) as! AdapterCell<T>
-        cell.setItem(a: list[indexPath.row])
+        cell.innerSetItem(a: list[indexPath.row])
         return cell
     }
 }

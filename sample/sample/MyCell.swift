@@ -19,9 +19,8 @@ class MyCell: AdapterCell<String> {
         self.addSubview(lbl!)
     }
     
-    override func setItem(a: String?) {
-        super.setItem(a: a)
-        lbl?.text = a
+    override func setItem(item: String?) {
+        lbl?.text = item
     }
     
 }
