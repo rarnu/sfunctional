@@ -63,12 +63,38 @@ class ViewController: UIViewController {
         }
         */
         
+        /*
         let tb = MyTable(frame: CGRect(x: 0, y: 0, width: screenWidth(), height: screenHeight()))
         tb.list.append("666")
         tb.list.append("777")
         tb.reloadData()
         self.view.addSubview(tb)
+        */
 
+        var s = "aaa"
+        s = s.insert(idx: 2, sub: "bbb")
+        print(s)
+        s = s.remove(idx: 2, length: 3)
+        print(s)
+        s = "abcdefg"
+        s = s.sub(start: 3)
+        print(s)
+        s = "abcdefg"
+        s = s.sub(start: 3, length: 2)
+        print(s)
+        s = "abcdefgabcdefg"
+        let idx = s.indexOf(sub: "de")
+        print(idx)
+        let idx2 = s.indexOf(sub: "de", start: 6)
+        print(idx2)
+        let idx3 = s.lastIndexOf(sub: "de")
+        print(idx3)
+        s = "a,,bc,,def,,ghij"
+        let arr = s.split(by: ",,")
+        print(arr)
+        s = "a,,bc,,def,,ghij"
+        s = s.trim(c:["i", "j", "a"])
+        print(s)
     }
     
     private func testurl(_ url: String) {
