@@ -9,8 +9,10 @@
 import UIKit
 import sfunctional
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, AdapterTableViewDelegate {
 
+    var tb: MyTable?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -63,13 +65,14 @@ class ViewController: UIViewController {
         }
         */
         
-        /*
-        let tb = MyTable(frame: CGRect(x: 0, y: 0, width: screenWidth(), height: screenHeight()))
-        tb.list.append("666")
-        tb.list.append("777")
-        tb.reloadData()
-        self.view.addSubview(tb)
-        */
+        
+        tb = MyTable(frame: CGRect(x: 0, y: 0, width: screenWidth(), height: screenHeight()))
+        tb!.adapterDelegate = self
+        tb!.list.append("666")
+        tb!.list.append("777")
+        tb!.reloadData()
+        self.view.addSubview(tb!)
+        
 
         var s = "aaa"
         s = s.insert(idx: 2, sub: "bbb")
@@ -112,6 +115,14 @@ class ViewController: UIViewController {
     @IBAction func btnClicked(sender: Any?) {
         print("6666")
         self.view.toast(msg: "6666666")
+    }
+    
+    func tableView(_ tableView: UITableView, clickAt indexPath: IndexPath) {
+        print("click: \(self.tb!.list[indexPath.row])")
+    }
+    
+    func tableView(_ tableView: UITableView, longPressAt indexPath: IndexPath) {
+        print("longpress: \(self.tb!.list[indexPath.row])")
     }
 
 }

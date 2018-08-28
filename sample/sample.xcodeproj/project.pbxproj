@@ -14,7 +14,6 @@
 		9245F4E52068937700CC45E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9245F4E32068937700CC45E2 /* LaunchScreen.storyboard */; };
 		9245F5612068DEF700CC45E2 /* sfunctional.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9245F5602068DEF700CC45E2 /* sfunctional.framework */; };
 		9245F5622068DEF700CC45E2 /* sfunctional.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9245F5602068DEF700CC45E2 /* sfunctional.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		92C75D1920FF286C00AE8AD5 /* MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C75D1820FF286C00AE8AD5 /* MyCell.swift */; };
 		92C75D1B20FF298F00AE8AD5 /* MyTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C75D1A20FF298F00AE8AD5 /* MyTable.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,7 +40,6 @@
 		9245F4E42068937700CC45E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9245F4E62068937700CC45E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9245F5602068DEF700CC45E2 /* sfunctional.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = sfunctional.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		92C75D1820FF286C00AE8AD5 /* MyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCell.swift; sourceTree = "<group>"; };
 		92C75D1A20FF298F00AE8AD5 /* MyTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,7 +81,6 @@
 				9245F4E12068937700CC45E2 /* Assets.xcassets */,
 				9245F4E32068937700CC45E2 /* LaunchScreen.storyboard */,
 				9245F4E62068937700CC45E2 /* Info.plist */,
-				92C75D1820FF286C00AE8AD5 /* MyCell.swift */,
 				92C75D1A20FF298F00AE8AD5 /* MyTable.swift */,
 			);
 			path = sample;
@@ -162,7 +159,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92C75D1920FF286C00AE8AD5 /* MyCell.swift in Sources */,
 				9245F4DD2068937700CC45E2 /* ViewController.swift in Sources */,
 				92C75D1B20FF298F00AE8AD5 /* MyTable.swift in Sources */,
 				9245F4DB2068937700CC45E2 /* AppDelegate.swift in Sources */,

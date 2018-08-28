@@ -39,7 +39,7 @@ open class AdapterCell<T>: UITableViewCell {
 
     open func setItem(item: T?) {
         // XXX: override your own data setter
-        fatalError("Subclasses need to implement the `lasetItemyout()` method.")
+        fatalError("Subclasses need to implement the `setItem()` method.")
     }
     
     public func getItem() -> T? {
@@ -47,11 +47,16 @@ open class AdapterCell<T>: UITableViewCell {
     }
 }
 
+public protocol AdapterTableViewDelegate {
+    func tableView(_ tableView: UITableView, clickAt indexPath: IndexPath)
+    func tableView(_ tableView: UITableView, longPressAt indexPath: IndexPath)
+}
+
 open class AdapterTableView<T>: UITableView, UITableViewDelegate, UITableViewDataSource {
 
     public let CELLNAME = "Cell"
-    
     public var list = Array<T>()
+    public var adapterDelegate: AdapterTableViewDelegate? = nil
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -72,11 +77,27 @@ open class AdapterTableView<T>: UITableView, UITableViewDelegate, UITableViewDat
         tableFooterView = UIView(frame: CGRect.zero)
         delegate = self
         dataSource = self
-        register()
+        register(cellClass(), forCellReuseIdentifier: CELLNAME)
+        let longEvent = UILongPressGestureRecognizer(target: self, action: #selector(longPressAction(_:)))
+        longEvent.minimumPressDuration = 1.5
+        self.addGestureRecognizer(longEvent)
     }
     
-    open func register() {
-        // XXX: override this, must pass a cell extened AdapterCell
+    @objc private func longPressAction(_ gesture: UILongPressGestureRecognizer) {
+        if (gesture.state == UIGestureRecognizerState.began) {
+            let p = gesture.location(in: self)
+            let idx = self.indexPathForRow(at: p)
+            if (idx == nil) {
+                return
+            }
+            self.deselectRow(at: idx!, animated: true)
+            if (self.adapterDelegate != nil) {
+                self.adapterDelegate?.tableView(self, longPressAt: idx!)
+            }
+        }
+    }
+    
+    open func cellClass() -> Swift.AnyClass? {
         fatalError("Subclasses need to implement the `register()` method.")
     }
     
@@ -93,4 +114,13 @@ open class AdapterTableView<T>: UITableView, UITableViewDelegate, UITableViewDat
         cell.innerSetItem(a: list[indexPath.row])
         return cell
     }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if (self.adapterDelegate != nil) {
+            self.adapterDelegate?.tableView(tableView, clickAt: indexPath)
+        }
+    }
+    
+    
 }
