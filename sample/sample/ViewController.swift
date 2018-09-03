@@ -11,11 +11,320 @@ import sfunctional
 
 class ViewController: UIViewController, AdapterTableViewDelegate {
 
-    var tb: MyTable?
-    
+    private let HTTPROOT = "http://10.211.55.24:12345/phproot"
+    private let HTTPURL = "http://10.211.55.24:12345/phproot/sample.php"
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let tb = MyTable(frame: CGRect(x: 0, y: 0, width: screenWidth(), height: screenHeight()))
+        tb.adapterDelegate = self
+        self.view.addSubview(tb)
+        
+        var arr = Array<String>()
+        arr.append("Thread")                        // DONE
+        arr.append("Http (Get)")                    // DONE
+        arr.append("Http (Post)")                   // DONE
+        arr.append("Http (Upload File)")            // DONE
+        arr.append("Download")                      // DONE
+        arr.append("FileIO (Text -> File)")         // DONE
+        arr.append("FileIO (Text -> Data)")         // DONE
+        arr.append("FileIO (File -> Data)")         // DONE
+        arr.append("FileIO (Data -> Text)")         // DONE
+        arr.append("FileIO (Data -> File)")         // DONE
+        arr.append("FileIO (File -> Text)")         // DONE
+        arr.append("BundleIO (File -> Text)")       // DONE
+        arr.append("BundleIO (File -> Data)")       // DONE
+        arr.append("BundleIO (File -> File)")       // DONE
+        arr.append("URL Decode")                    // DONE
+        arr.append("Toast")                         // DONE
+        arr.append("Context")                       // DONE
+        arr.append("System")                        // DONE
+        arr.append("Zip (Zip)")                     // DONE
+        arr.append("Zip (Unzip)")                   // DONE
+        arr.append("Image (...)")                   // DONE
+        arr.append("Extension (...)")               // DONE
+        arr.append("TableView (...)")               // DONE
+        tb.assignList(arr: arr)
+        tb.reloadData()
+        
+        /*
+        
+         */
+    }
+    
+
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    func tableView<T>(_ tableView: AdapterTableView<T>, clickAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            sampleThread()
+            break
+        case 1:
+            sampleHttpGet()
+            break
+        case 2:
+            sampleHttpPost()
+            break
+        case 3:
+            sampleHttpUploadFile()
+            break
+        case 4:
+            sampleDownload()
+            break
+        case 5:
+            sampleFileIOTF()
+            break
+        case 6:
+            sampleFileIOTD()
+            break
+        case 7:
+            sampleFileIOFD()
+            break
+        case 8:
+            sampleFileIODT()
+            break
+        case 9:
+            sampleFileIODF()
+            break
+        case 10:
+            sampleFileIOFT()
+            break
+        case 11:
+            sampleBundleIOFT()
+            break
+        case 12:
+            sampleBundleIOFD()
+            break
+        case 13:
+            sampleBundleIOFF()
+            break
+        case 14:
+            sampleUrlDecode()
+            break
+        case 15:
+            sampleToast()
+            break
+        case 16:
+            sampleContext()
+            break
+        case 17:
+            sampleSystem()
+            break
+        case 18:
+            sampleZipZip()
+            break
+        case 19:
+            sampleZipUnzip()
+            break
+        case 20:
+            jumpImage()
+            break
+        case 21:
+            jumpExtension()
+            break
+        case 22:
+            jumpTableView()
+            break
+        default:
+            break
+        }
+    }
+    
+    func tableView<T>(_ tableView: AdapterTableView<T>, longPressAt indexPath: IndexPath) {
+        
+    }
+
+    // ===========================================================
+    // THREAD
+    // ===========================================================
+    private func sampleThread() {
+        self.thread() {
+            print("Call in sub thread 1")
+            self.mainThread() {
+                print("Call in main thread")
+            }
+            print("Call in sub thread 2")
+        }
+    }
+
+    // ===========================================================
+    // HTTP
+    // ===========================================================
+    private func sampleHttpGet() {
+        // sample http get
+        http("\(HTTPURL)?m=get&gp=rarnuget") { (code, data, error) in
+            print("code: \(code)")
+            if (data == nil) {
+                print("data: N/A")
+                if (error != nil) {
+                    print("error: \(error!)")
+                }
+            } else {
+                print("data: \(data!)")
+            }
+        }
+    }
+
+    private func sampleHttpPost() {
+        // sample http post
+        http(HTTPURL, method: "POST", mimeType: "", data: "", getParam: "", postParam: ["m": "post", "pp": "rarnupost"], fileParam: nil) { (code, data, error) in
+            print("code: \(code)")
+            if (data == nil) {
+                print("data: N/A")
+                if (error != nil) {
+                    print("error: \(error!)")
+                }
+            } else {
+                print("data: \(data!)")
+            }
+        }
+    }
+
+    private func sampleHttpUploadFile() {
+        // sample http uploda file
+        fileIO(src: "sample upload file", dest: "\(documentPath())/upload.txt", isSrcText: true) { (succ, data, error) in }
+        http(HTTPURL, method: "POST", mimeType: "", data: "", getParam: "", postParam: ["m": "file", "fp": "rarnufile"], fileParam: ["file": "\(documentPath())/upload.txt"]) { (code, data, error) in
+            print("code: \(code)")
+            if (data == nil) {
+                print("data: N/A")
+                if (error != nil) {
+                    print("error: \(error!)")
+                }
+            } else {
+                print("data: \(data!)")
+            }
+        }
+    }
+
+    // ===========================================================
+    // DOWNLOAD
+    // ===========================================================
+    private func sampleDownload() {
+        // sample download
+        download("\(HTTPROOT)/sample.txt", "\(documentPath())/server.txt") { (state, position, fileSize, error) in
+            print("\(state), \(position), \(fileSize)")
+            if (state == DownloadState.Error) {
+                print("Download Error => \(error!)")
+            }
+            if (state == DownloadState.Complete) {
+                print(documentPath())
+            }
+        }
+    }
+
+    // ===========================================================
+    // FILEIO
+    // ===========================================================
+    private func sampleFileIOTF() {
+        // sample fileio text -> file
+        print(documentPath())
+        fileIO(src: "sample text", dest: "\(documentPath())/sample.txt", isSrcText: true) { (succ, data, error) in
+            print(succ ? "TRUE" : "FALSE")
+        }
+    }
+
+    private func sampleFileIOTD() {
+        // sample fileio text -> data
+        fileIO(src: "sample text", dest: Data(), isSrcText: true) { (succ, data, error) in
+            let s = String(data: data! as! Data, encoding: .utf8)
+            print(s!)
+        }
+    }
+
+    private func sampleFileIOFD() {
+        // sample fileio file -> data
+        fileIO(src: "\(documentPath())/sample.txt", dest: Data()) { (succ, data, error) in
+            if (data != nil) {
+                let s = String(data: data! as! Data, encoding: .utf8)
+                print(s!)
+            } else {
+                print("File not exists")
+            }
+         }
+    }
+
+    private func sampleFileIODT() {
+        // sample fileio data -> text
+        let data = "sample text".data(using: .utf8)!
+        fileIO(src: data, dest: "", isDestText: true) { (succ, data, error) in
+            if (succ) {
+                print(data! as! String)
+            } else {
+                print("File not exits")
+            }
+        }
+    }
+
+    private func sampleFileIODF() {
+        // sample fileio data -> file
+        let data = "sample text".data(using: .utf8)!
+        fileIO(src: data, dest: "\(documentPath())/sample.txt") { (succ, data, error) in
+            print(succ ? "TRUE" : "FALSE")
+        }
+    }
+
+    private func sampleFileIOFT() {
+        // sample fileio file -> text
+        fileIO(src: "\(documentPath())/sample.txt", dest: "", isDestText: true) { (succ, data, error) in
+            if (succ) {
+                print(data! as! String)
+            } else {
+                print("File not exits")
+            }
+        }
+    }
+
+    // ===========================================================
+    // BUNDLEIO
+    // ===========================================================
+    private func sampleBundleIOFT() {
+        // sample bundle io file -> text
+        bundleIO(filename: "b.txt", dest: "", isDestText: true) { (succ, data, error) in
+            if (succ) {
+                print(data! as! String)
+            } else {
+                print("Bundle File not exits")
+            }
+        }
+    }
+
+    private func sampleBundleIOFD() {
+        // sample bundle io file -> data
+        bundleIO(filename: "b.txt", dest: Data()) { (succ, data, error) in
+            if (data != nil) {
+                let s = String(data: data! as! Data, encoding: .utf8)
+                print(s!)
+            } else {
+                print("Bundle File not exists")
+            }
+        }
+    }
+
+    private func sampleBundleIOFF() {
+        // sample bundle io file -> file
+        print(documentPath())
+        bundleIO(filename: "b.txt", dest: "\(documentPath())/bundle.txt") { (succ, data, error) in
+            print(succ ? "TRUE" : "FALSE")
+        }
+    }
+
+    // ===========================================================
+    // URL DECODE
+    // ===========================================================
+
+    private func sampleUrlDecode() {
+        func testurl(_ url: String) {
+            let info = decodeUrl(url)
+            print("info => protocol: \(info.proto), port: \(info.port), host: \(info.host), uri: \(info.uri)")
+            for (k, v) in info.params {
+                print("k: \(k), v: \(v)")
+            }
+        }
         testurl("https://www.baidu.com:1234/uri/suburi?p1=a&p2=b")
         testurl("https://www.baidu.com:1234/uri/suburi?p1=&p2=b")
         testurl("https://www.baidu.com/uri/suburi?p1=a&p2=b")
@@ -23,106 +332,85 @@ class ViewController: UIViewController, AdapterTableViewDelegate {
         testurl("https://www.baidu.com")
         testurl("www.baidu.com:1234")
         testurl("www.baidu.com")
-        
-        /*
-        let emu = isEmulator()
-        print("emu => \(emu)")
-        
-        thread {
-            // do something in a sub thread
-            self.mainThread {
-                // do something in main thread
-            }
-            // do something in a sub thread
-        }
-        
-        // http
-        let param = ["action":"login", "account":"rarnu", "password":"96e79218965eb72c92a549dd5a330112"]
-        http("http://120.27.9.223/account", method: "POST", postParam: param) { (_ code: Int, _ result: String?, _ error: String?) in
-            print(code)
-            print(result!)
-        }
-        
-        // download
-        download("https://res.hjfile.cn/pt/hj/images/logo.png", documentPath(true) + "a.png") { (state, position, fileSize, error) in
-            print("\(state), \(position), \(fileSize)")
-            if (state == DownloadState.Error) {
-                print("Download Error => \(error!)")
-            }
-        }
-        
-        var dt = Data() as Any
-        
-        fileIO(src: "try1", dest: dt, isSrcText: true) { (succ, data, error) in
-            dt = data as! Data
-            let s = String(data: dt as! Data, encoding: .utf8)
-            print(s!)
-        }
-        
-        let img = UIImage.loadFromBundle("666")
-        if (img != nil) {
-            print(img!)
-        }
-        */
-        
-        
-        tb = MyTable(frame: CGRect(x: 0, y: 0, width: screenWidth(), height: screenHeight()))
-        tb!.adapterDelegate = self
-        tb!.list.append("666")
-        tb!.list.append("777")
-        tb!.reloadData()
-        self.view.addSubview(tb!)
-        
-
-        var s = "aaa"
-        s = s.insert(idx: 2, sub: "bbb")
-        print(s)
-        s = s.remove(idx: 2, length: 3)
-        print(s)
-        s = "abcdefg"
-        s = s.sub(start: 3)
-        print(s)
-        s = "abcdefg"
-        s = s.sub(start: 3, length: 2)
-        print(s)
-        s = "abcdefgabcdefg"
-        let idx = s.indexOf(sub: "de")
-        print(idx)
-        let idx2 = s.indexOf(sub: "de", start: 6)
-        print(idx2)
-        let idx3 = s.lastIndexOf(sub: "de")
-        print(idx3)
-        s = "a,,bc,,def,,ghij"
-        let arr = s.split(by: ",,")
-        print(arr)
-        s = "a,,bc,,def,,ghij"
-        s = s.trim(c:["i", "j", "a"])
-        print(s)
     }
-    
-    private func testurl(_ url: String) {
-        let info = decodeUrl(url)
-        print("info => protocol: \(info.proto), port: \(info.port), host: \(info.host), uri: \(info.uri)")
-        for (k, v) in info.params {
-            print("k: \(k), v: \(v)")
+
+    // ===========================================================
+    // TOAST
+    // ===========================================================
+    private func sampleToast() {
+        self.view.toast(msg: "Sample Toast")
+    }
+
+    // ===========================================================
+    // CONTEXT
+    // ===========================================================
+    private func sampleContext() {
+        // sample context
+        print("system version: \(systemVersion())")
+        print("system name: \(systemName())")
+        print("app version: \(appVersion())")
+        print("screen size: \(screenWidth()) x \(screenHeight())")
+        print("statusbar size: \(statusbarSize())")
+
+        writeConfig(key: "samplekey", value: "sample value")
+        let cfg = readConfig(key: "samplekey", def: "")
+        print("config: \(cfg!)")
+    }
+
+    // ===========================================================
+    // SYSTEM
+    // ===========================================================
+    private func sampleSystem() {
+        // sample system
+        print("Emulator: \(isEmulator() ? "TRUE" : "FALSE")")
+        print("Jailbreak: \(isJailbreak() ? "TRUE" : "FALSE")")
+    }
+
+    // ===========================================================
+    // ZIP
+    // ===========================================================
+    private func sampleZipZip() {
+        // sample zip zip
+        print(documentPath())
+        let mgr = FileManager.default
+        do {
+            try mgr.createDirectory(atPath: "\(documentPath())/zip", withIntermediateDirectories: true)
+            fileIO(src: "SampleA", dest: "\(documentPath())/zip/a.txt", isSrcText: true) { (succ, data, error) in }
+            fileIO(src: "SampleB", dest: "\(documentPath())/zip/b.txt", isSrcText: true) { (succ, data, error) in }
+            fileIO(src: "SampleC", dest: "\(documentPath())/zip/c.txt", isSrcText: true) { (succ, data, error) in }
+        } catch {
+
+        }
+
+        zip("\(documentPath())/sample.zip", "\(documentPath())/zip") { succ in
+            print(succ ? "TRUE" : "FALSE")
         }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    private func sampleZipUnzip() {
+        // sample zip unzip
+        print(documentPath())
+        unzip("\(documentPath())/sample.zip", "\(documentPath())/unzip") { succ in
+            print(succ ? "TRUE" : "FALSE")
+        }
     }
-    
-    @IBAction func btnClicked(sender: Any?) {
-        print("6666")
-        self.view.toast(msg: "6666666")
+
+    // ===========================================================
+    // JUMP OTHER
+    // ===========================================================
+    private func jumpImage() {
+        // jump image
+        self.show(self.vc(name: "imgvc")!, sender: nil)
     }
-    
-    func tableView(_ tableView: UITableView, clickAt indexPath: IndexPath) {
-        print("click: \(self.tb!.list[indexPath.row])")
+
+    private func jumpExtension() {
+        // jump extension
+        self.show(self.vc(name: "extvc")!, sender: nil)
     }
-    
-    func tableView(_ tableView: UITableView, longPressAt indexPath: IndexPath) {
-        print("longpress: \(self.tb!.list[indexPath.row])")
+
+    private func jumpTableView() {
+        // jump tableview
+        self.show(self.vc(name: "tblvc")!, sender: nil)
     }
 
 }

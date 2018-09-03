@@ -215,7 +215,7 @@ public extension UIViewController {
     
     func alert(title: String, message: String, btn1: String, btn2: String, placeholder: String, initText: String, callback: @escaping (_ which: Int, _ text: String?) -> Void) {
         let a = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        a.addTextField(configurationHandler: {tf in
+        a.addTextField(configurationHandler: { tf in
             tf.placeholder = placeholder
             tf.text = initText
         })
@@ -228,4 +228,22 @@ public extension UIViewController {
         present(a, animated: true, completion: nil)
     }
     
+    func alert(title: String, message: String, btn1: String, btn2: String, placeholder1: String, placeholder2: String, initText1: String, initText2: String, callback: @escaping (_ which: Int, _ text1: String?, _ text2: String?) -> Void) {
+        let a = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        a.addTextField(configurationHandler: { tf in
+            tf.placeholder = placeholder1
+            tf.text = initText1
+        })
+        a.addTextField(configurationHandler: { tf in
+            tf.placeholder = placeholder2
+            tf.text = initText2
+        })
+        a.addAction(UIAlertAction(title: btn1, style: UIAlertActionStyle.default, handler: { _ in
+            callback(0, a.textFields![0].text, a.textFields![1].text)
+        }))
+        a.addAction(UIAlertAction(title: btn2, style: UIAlertActionStyle.cancel, handler: { _ in
+            callback(1, a.textFields![0].text, a.textFields![1].text)
+        }))
+        present(a, animated: true, completion: nil)
+    }
 }
