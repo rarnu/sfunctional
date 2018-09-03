@@ -50,12 +50,21 @@ private class FileOperations {
             }
         } else {
             if (dest is String) {
-                let adata = NSData(contentsOfFile: file)!
-                adata.write(toFile: dest as! String, atomically: true)
-                result(true, nil, nil)
+                let adata = NSData(contentsOfFile: file)
+                if (adata == nil) {
+                    result(false, nil, nil)
+                } else {
+                    adata!.write(toFile: dest as! String, atomically: true)
+                    result(true, nil, nil)
+                }
             } else if (dest is Data) {
-                let adata = NSData(contentsOfFile: file)! as Data
-                result(true, adata, nil)
+                let ndata = NSData(contentsOfFile: file)
+                if (ndata == nil) {
+                    result(false, nil, nil)
+                } else {
+                    let adata = ndata! as Data
+                    result(true, adata, nil)
+                }
             } else {
                 result(false, nil, ERROR_DEST)
             }

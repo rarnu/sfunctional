@@ -409,7 +409,7 @@ BOOL _fileIsSymbolicLink(const unz_file_info *fileInfo);
             }
             
             if ([fileManager fileExistsAtPath:fullPath] && !isDirectory && !overwrite) {
-                //FIXME: couldBe CRC Check?
+                //couldBe CRC Check?
                 unzCloseCurrentFile(zip);
                 ret = unzGoToNextFile(zip);
                 continue;

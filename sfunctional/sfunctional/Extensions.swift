@@ -18,7 +18,7 @@ public extension NSObject {
 }
 
 public extension String {
-    // TODO: string extension
+
     mutating func insert(idx: Int, sub: String) -> String {
         var tmp = self
         tmp.insert(contentsOf: sub, at: tmp.index(tmp.startIndex, offsetBy: idx))

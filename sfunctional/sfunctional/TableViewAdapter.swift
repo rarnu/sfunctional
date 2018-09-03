@@ -48,15 +48,23 @@ open class AdapterCell<T>: UITableViewCell {
 }
 
 public protocol AdapterTableViewDelegate {
-    func tableView(_ tableView: UITableView, clickAt indexPath: IndexPath)
-    func tableView(_ tableView: UITableView, longPressAt indexPath: IndexPath)
+    func tableView<T>(_ tableView: AdapterTableView<T>, clickAt indexPath: IndexPath)
+    func tableView<T>(_ tableView: AdapterTableView<T>, longPressAt indexPath: IndexPath)
+}
+
+public protocol AdapterTableViewRefreshDelegate {
+    func tableView<T>(_ tableView: AdapterTableView<T>, pulldown list: inout Array<T>)
 }
 
 open class AdapterTableView<T>: UITableView, UITableViewDelegate, UITableViewDataSource {
-
+    
     public let CELLNAME = "Cell"
     public var list = Array<T>()
     public var adapterDelegate: AdapterTableViewDelegate? = nil
+    public var refreshDelegate: AdapterTableViewRefreshDelegate? = nil
+    
+    private var refreshText = ""
+    private var refreshingText = ""
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -71,6 +79,40 @@ open class AdapterTableView<T>: UITableView, UITableViewDelegate, UITableViewDat
     public init(frame: CGRect) {
         super.init(frame: frame, style: UITableViewStyle.plain)
         load()
+    }
+    
+    public func assignList(arr: Array<T>) {
+        list.removeAll()
+        for t in arr {
+            list.append(t)
+        }
+    }
+    
+    public func pulldownRefresh(_ enabled: Bool, base: String = "Pulldown to refresh", refreshing: String = "Refreshing...") {
+        refreshText = base
+        refreshingText = refreshing
+        if (!enabled) {
+            self.refreshControl = nil
+        } else {
+            let ref = UIRefreshControl()
+            ref.attributedTitle = NSAttributedString(string: refreshText)
+            ref.addTarget(self, action: #selector(onRefresh(_:)), for: UIControlEvents.valueChanged)
+            self.refreshControl = ref
+        }
+    }
+    
+    @objc private func onRefresh(_ sender: Any?) {
+        if (self.refreshControl != nil) {
+            if (self.refreshControl!.isRefreshing) {
+                self.refreshControl!.attributedTitle = NSAttributedString(string: refreshingText)
+                if (self.refreshDelegate != nil) {
+                    self.refreshDelegate!.tableView(self, pulldown: &self.list)
+                }
+                self.refreshControl!.attributedTitle = NSAttributedString(string: refreshText)
+                self.reloadData()
+                self.refreshControl?.endRefreshing()
+            }
+        }
     }
     
     private func load() {
@@ -118,7 +160,7 @@ open class AdapterTableView<T>: UITableView, UITableViewDelegate, UITableViewDat
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if (self.adapterDelegate != nil) {
-            self.adapterDelegate?.tableView(tableView, clickAt: indexPath)
+            self.adapterDelegate?.tableView(self, clickAt: indexPath)
         }
     }
     
