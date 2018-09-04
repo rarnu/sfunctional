@@ -35,7 +35,7 @@ class ImageViewController: UIViewController {
         }
         
         makeButton(top, "blackWhite", 0)
-        makeButton(top + 30, "blue", 1)
+        makeButton(top + 30, "blur", 1)
         makeButton(top + 60, "rotate 90 clockwise", 2)
         makeButton(top + 90, "rotate 90 counter clockwise", 3)
         makeButton(top + 120, "rotate 180", 4)
@@ -58,7 +58,7 @@ class ImageViewController: UIViewController {
             img?.image = p0
             break
         case 1:
-            let p1 = originPic?.blur(5)
+            let p1 = originPic?.blur(2)
             img?.image = p1
             break
         case 2:
