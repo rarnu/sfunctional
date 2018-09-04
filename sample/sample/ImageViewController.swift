@@ -51,7 +51,6 @@ class ImageViewController: UIViewController {
     }
     
     @objc func btnClicked(_ sender: UIButton) {
-        print(sender.tag)
         switch sender.tag {
         case 0:
             let p0 = originPic?.blackWhite()

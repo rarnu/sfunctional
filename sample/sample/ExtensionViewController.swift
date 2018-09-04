@@ -11,6 +11,8 @@ import sfunctional
 
 class ExtensionViewController: UIViewController {
 
+    private let console = UITextView(frame: CGRect(x: 0, y: screenHeight() - 120, width: screenWidth(), height: 120))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Extension"
@@ -33,10 +35,22 @@ class ExtensionViewController: UIViewController {
         makeButton(top + 120, "Alert 3", 4)
         makeButton(top + 150, "Alert 4", 5)
         makeButton(top + 180, "Alert 5", 6)
+        
+        console.layoutManager.allowsNonContiguousLayout = false
+        console.isEditable = false
+        console.text = ""
+        self.view.addSubview(console)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    private func addConsoleLog(_ txt: String) {
+        self.mainThread {
+            self.console.text = self.console.text + txt + "\n"
+            self.console.scrollRangeToVisible(NSRange(location: self.console.text.count, length: 1))
+        }
     }
     
     @objc func btnClicked(_ sender: UIButton) {
@@ -44,59 +58,59 @@ class ExtensionViewController: UIViewController {
         case 0:
              var s = "aaa"
              s = s.insert(idx: 2, sub: "bbb")
-             print(s)
+             addConsoleLog(s)
              s = s.remove(idx: 2, length: 3)
-             print(s)
+             addConsoleLog(s)
              s = "abcdefg"
              s = s.sub(start: 3)
-             print(s)
+             addConsoleLog(s)
              s = "abcdefg"
              s = s.sub(start: 3, length: 2)
-             print(s)
+             addConsoleLog(s)
              s = "abcdefgabcdefg"
              let idx = s.indexOf(sub: "de")
-             print(idx)
+             addConsoleLog("\(idx)")
              let idx2 = s.indexOf(sub: "de", start: 6)
-             print(idx2)
+             addConsoleLog("\(idx2)")
              let idx3 = s.lastIndexOf(sub: "de")
-             print(idx3)
+             addConsoleLog("\(idx3)")
              s = "a,,bc,,def,,ghij"
              let sarr = s.split(by: ",,")
-             print(sarr)
+             addConsoleLog("\(sarr)")
              s = "a,,bc,,def,,ghij"
              s = s.trim(c:["i", "j", "a"])
-             print(s)
+             addConsoleLog(s)
             break
         case 1:
             let c = UIColor().parseString("#FF0000")
-            print(c)
+            addConsoleLog("\(c)")
             break
         case 2:
             alert(title: "title", message: "message", btn: "ok") {
-                print("ok clicked")
+                self.addConsoleLog("ok clicked")
             }
             break
         case 3:
             alert(title: "title", message: "message", btn1: "ok", btn2: "cancel") { which in
-                print("clicked \(which)")
+                self.addConsoleLog("clicked \(which)")
             }
             break
         case 4:
             alert(title: "title", message: "message", btn1: "btn1", btn2: "btn2", btn3: "btn3") { which in
-                print("clicked \(which)")
+                self.addConsoleLog("clicked \(which)")
             }
             break
         case 5:
             alert(title: "title", message: "message", btn1: "ok", btn2: "cancel", placeholder: "input text", initText: "") { (which, text) in
-                print("clicked \(which)")
-                print("text :\(text!)")
+                self.addConsoleLog("clicked \(which)")
+                self.addConsoleLog("text :\(text!)")
             }
             break
         case 6:
             alert(title: "title", message: "message", btn1: "ok", btn2: "cancel", placeholder1: "account", placeholder2: "password", initText1: "", initText2: "") { (which, text1, text2) in
-                print("clicked \(which)")
-                print("text1 :\(text1!)")
-                print("text2 :\(text2!)")
+                self.addConsoleLog("clicked \(which)")
+                self.addConsoleLog("text1 :\(text1!)")
+                self.addConsoleLog("text2 :\(text2!)")
             }
             break
         default:
