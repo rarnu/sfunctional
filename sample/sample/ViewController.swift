@@ -51,6 +51,7 @@ class ViewController: UIViewController, AdapterTableViewDelegate {
         arr.append("Image (...)")                   // DONE
         arr.append("Extension (...)")               // DONE
         arr.append("TableView (...)")               // DONE
+        arr.append("PopupViewController")
         tb.assignList(arr: arr)
         tb.reloadData()
     }
@@ -129,6 +130,9 @@ class ViewController: UIViewController, AdapterTableViewDelegate {
             break
         case 22:
             jumpTableView()
+            break
+        case 23:
+            samplePopupViewController()
             break
         default:
             break
@@ -418,6 +422,15 @@ class ViewController: UIViewController, AdapterTableViewDelegate {
     private func jumpTableView() {
         // jump tableview
         self.show(self.vc(name: "tblvc")!, sender: nil)
+    }
+    
+    // ===========================================================
+    // POPUPVIEWCONTROLLER
+    // ===========================================================
+    
+    private func samplePopupViewController() {
+        let vc = MyPopupController(width: 500, height: 300, alpha: 0.5)
+        self.present(vc, animated: true, completion: nil)
     }
 
 }
