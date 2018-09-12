@@ -51,7 +51,8 @@ class ViewController: UIViewController, AdapterTableViewDelegate {
         arr.append("Image (...)")                   // DONE
         arr.append("Extension (...)")               // DONE
         arr.append("TableView (...)")               // DONE
-        arr.append("PopupViewController")
+        arr.append("PopupViewController")           // DONE
+        arr.append("Regular Expression")
         tb.assignList(arr: arr)
         tb.reloadData()
     }
@@ -133,6 +134,9 @@ class ViewController: UIViewController, AdapterTableViewDelegate {
             break
         case 23:
             samplePopupViewController()
+            break
+        case 24:
+            sampleRegEx()
             break
         default:
             break
@@ -433,5 +437,17 @@ class ViewController: UIViewController, AdapterTableViewDelegate {
         self.present(vc, animated: true, completion: nil)
     }
 
+    // ===========================================================
+    // REGULAR EXPRESSION
+    // ===========================================================
+    private func sampleRegEx() {
+        let b1 = RegExUtils.isStringReg("abcdefg_123456", 5)
+        let b2 = RegExUtils.isStringReg("abc我们_123", 5)
+        self.addConsoleLog("b1: \(b1), b2: \(b2)")
+        
+        let e1 = RegExUtils.isEmail("rarnu1985@gmail.com")
+        let e2 = RegExUtils.isEmail("abcdefg.com")
+        self.addConsoleLog("e1: \(e1), e2: \(e2)")
+    }
 }
 
