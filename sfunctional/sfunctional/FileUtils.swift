@@ -21,6 +21,24 @@ public func fileIO(src: Any, dest: Any, isSrcText: Bool = false, isDestText: Boo
     FileOperations.fileIO(src, dest, isSrcText, isDestText, result)
 }
 
+public func fileReadText(filePath: String) -> String {
+    var ret = ""
+    fileIO(src: filePath, dest: "", isDestText: true) { (succ, text, _) in
+        if (succ) {
+            ret = text! as! String
+        }
+    }
+    return ret
+}
+
+public func fileWriteText(filePath: String, text: String) -> Bool {
+    var ret = false
+    fileIO(src: text, dest: filePath, isSrcText: true) { (succ, _, _) in
+        ret = succ
+    }
+    return ret
+}
+
 private class FileOperations {
     
     private static let ERROR_SRC = "Src Type Error"
