@@ -181,55 +181,55 @@ public extension UIViewController {
     }
     
     func alert(title: String, message: String, btn: String, callback:@escaping () -> Void) {
-        let a = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        a.addAction(UIAlertAction(title: btn, style: UIAlertActionStyle.default, handler: { _ in
+        let a = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        a.addAction(UIAlertAction(title: btn, style: UIAlertAction.Style.default, handler: { _ in
             callback()
         }))
         present(a, animated: true, completion: nil)
     }
     
     func alert(title: String, message: String, btn1: String, btn2: String, callback:@escaping (_ which: Int) -> Void) {
-        let a = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        a.addAction(UIAlertAction(title: btn1, style: UIAlertActionStyle.default, handler: { _ in
+        let a = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        a.addAction(UIAlertAction(title: btn1, style: UIAlertAction.Style.default, handler: { _ in
             callback(0)
         }))
-        a.addAction(UIAlertAction(title: btn2, style: UIAlertActionStyle.cancel, handler: { _ in
+        a.addAction(UIAlertAction(title: btn2, style: UIAlertAction.Style.cancel, handler: { _ in
             callback(1)
         }))
         present(a, animated: true, completion: nil)
     }
     
     func alert(title: String, message: String, btn1: String, btn2: String, btn3: String, callback: @escaping (_ which: Int) -> Void) {
-        let a = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        a.addAction(UIAlertAction(title: btn1, style: UIAlertActionStyle.default, handler: { _ in
+        let a = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        a.addAction(UIAlertAction(title: btn1, style: UIAlertAction.Style.default, handler: { _ in
             callback(0)
         }))
-        a.addAction(UIAlertAction(title: btn2, style: UIAlertActionStyle.cancel, handler: { _ in
+        a.addAction(UIAlertAction(title: btn2, style: UIAlertAction.Style.cancel, handler: { _ in
             callback(1)
         }))
-        a.addAction(UIAlertAction(title: btn3, style: UIAlertActionStyle.destructive, handler: { _ in
+        a.addAction(UIAlertAction(title: btn3, style: UIAlertAction.Style.destructive, handler: { _ in
             callback(2)
         }))
         present(a, animated: true, completion: nil)
     }
     
     func alert(title: String, message: String, btn1: String, btn2: String, placeholder: String, initText: String, callback: @escaping (_ which: Int, _ text: String?) -> Void) {
-        let a = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let a = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         a.addTextField(configurationHandler: { tf in
             tf.placeholder = placeholder
             tf.text = initText
         })
-        a.addAction(UIAlertAction(title: btn1, style: UIAlertActionStyle.default, handler: { _ in
+        a.addAction(UIAlertAction(title: btn1, style: UIAlertAction.Style.default, handler: { _ in
             callback(0, a.textFields![0].text)
         }))
-        a.addAction(UIAlertAction(title: btn2, style: UIAlertActionStyle.cancel, handler: { _ in
+        a.addAction(UIAlertAction(title: btn2, style: UIAlertAction.Style.cancel, handler: { _ in
             callback(1, a.textFields![0].text)
         }))
         present(a, animated: true, completion: nil)
     }
     
     func alert(title: String, message: String, btn1: String, btn2: String, placeholder1: String, placeholder2: String, initText1: String, initText2: String, callback: @escaping (_ which: Int, _ text1: String?, _ text2: String?) -> Void) {
-        let a = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let a = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         a.addTextField(configurationHandler: { tf in
             tf.placeholder = placeholder1
             tf.text = initText1
@@ -238,10 +238,10 @@ public extension UIViewController {
             tf.placeholder = placeholder2
             tf.text = initText2
         })
-        a.addAction(UIAlertAction(title: btn1, style: UIAlertActionStyle.default, handler: { _ in
+        a.addAction(UIAlertAction(title: btn1, style: UIAlertAction.Style.default, handler: { _ in
             callback(0, a.textFields![0].text, a.textFields![1].text)
         }))
-        a.addAction(UIAlertAction(title: btn2, style: UIAlertActionStyle.cancel, handler: { _ in
+        a.addAction(UIAlertAction(title: btn2, style: UIAlertAction.Style.cancel, handler: { _ in
             callback(1, a.textFields![0].text, a.textFields![1].text)
         }))
         present(a, animated: true, completion: nil)

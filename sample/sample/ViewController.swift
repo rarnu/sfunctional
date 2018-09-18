@@ -52,7 +52,7 @@ class ViewController: UIViewController, AdapterTableViewDelegate {
         arr.append("Extension (...)")               // DONE
         arr.append("TableView (...)")               // DONE
         arr.append("PopupViewController")           // DONE
-        arr.append("Regular Expression")
+        arr.append("Regular Expression")            // DONE
         tb.assignList(arr: arr)
         tb.reloadData()
     }

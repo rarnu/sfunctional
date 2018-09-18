@@ -12,7 +12,7 @@ open class AdapterCell<T>: UITableViewCell {
     
     private var innerItem: T?
     
-    public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         layout()
     }
@@ -71,13 +71,13 @@ open class AdapterTableView<T>: UITableView, UITableViewDelegate, UITableViewDat
         load()
     }
     
-    public override init(frame: CGRect, style: UITableViewStyle) {
+    public override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         load()
     }
     
     public init(frame: CGRect) {
-        super.init(frame: frame, style: UITableViewStyle.plain)
+        super.init(frame: frame, style: UITableView.Style.plain)
         load()
     }
     
@@ -96,7 +96,7 @@ open class AdapterTableView<T>: UITableView, UITableViewDelegate, UITableViewDat
         } else {
             let ref = UIRefreshControl()
             ref.attributedTitle = NSAttributedString(string: refreshText)
-            ref.addTarget(self, action: #selector(onRefresh(_:)), for: UIControlEvents.valueChanged)
+            ref.addTarget(self, action: #selector(onRefresh(_:)), for: UIControl.Event.valueChanged)
             self.refreshControl = ref
         }
     }
@@ -126,7 +126,7 @@ open class AdapterTableView<T>: UITableView, UITableViewDelegate, UITableViewDat
     }
     
     @objc private func longPressAction(_ gesture: UILongPressGestureRecognizer) {
-        if (gesture.state == UIGestureRecognizerState.began) {
+        if (gesture.state == UIGestureRecognizer.State.began) {
             let p = gesture.location(in: self)
             let idx = self.indexPathForRow(at: p)
             if (idx == nil) {

@@ -50,7 +50,6 @@
 		9245F5562068A19600CC45E2 /* SSZipArchive.h in Headers */ = {isa = PBXBuildFile; fileRef = 9245F52F2068A19600CC45E2 /* SSZipArchive.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9245F5572068A19600CC45E2 /* SSZipCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 9245F5302068A19600CC45E2 /* SSZipCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9245F5582068A19600CC45E2 /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 9245F5312068A19600CC45E2 /* SSZipArchive.m */; };
-		9245F5592068A19600CC45E2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9245F5322068A19600CC45E2 /* Info.plist */; };
 		9245F55B2068A1B800CC45E2 /* ZipUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9245F55A2068A1B800CC45E2 /* ZipUtils.swift */; };
 		9245F55D2068A38500CC45E2 /* sfunctional.h in Headers */ = {isa = PBXBuildFile; fileRef = 9245F55C2068A29800CC45E2 /* sfunctional.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9245F55F2068C8B300CC45E2 /* HttpUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9245F55E2068C8B300CC45E2 /* HttpUtils.swift */; };
@@ -72,7 +71,6 @@
 		9230B34F206A4EB7004D4FE1 /* DatetimeUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatetimeUtils.swift; sourceTree = "<group>"; };
 		9230B351206A4ED4004D4FE1 /* SystemUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemUtils.swift; sourceTree = "<group>"; };
 		9245F4F62068954300CC45E2 /* sfunctional.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = sfunctional.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9245F4FA2068954300CC45E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9245F507206898FC00CC45E2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9245F50A2068A19600CC45E2 /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
 		9245F50C2068A19600CC45E2 /* crypt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crypt.c; sourceTree = "<group>"; };
@@ -112,7 +110,6 @@
 		9245F52F2068A19600CC45E2 /* SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipArchive.h; sourceTree = "<group>"; };
 		9245F5302068A19600CC45E2 /* SSZipCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipCommon.h; sourceTree = "<group>"; };
 		9245F5312068A19600CC45E2 /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
-		9245F5322068A19600CC45E2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9245F55A2068A1B800CC45E2 /* ZipUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZipUtils.swift; sourceTree = "<group>"; };
 		9245F55C2068A29800CC45E2 /* sfunctional.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sfunctional.h; sourceTree = "<group>"; };
 		9245F55E2068C8B300CC45E2 /* HttpUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpUtils.swift; sourceTree = "<group>"; };
@@ -169,7 +166,6 @@
 			children = (
 				9209255A206A8F1000E61D60 /* SysEmu */,
 				9245F5092068A19600CC45E2 /* SSZipArchive */,
-				9245F4FA2068954300CC45E2 /* Info.plist */,
 				9245F507206898FC00CC45E2 /* Extensions.swift */,
 				9245F55A2068A1B800CC45E2 /* ZipUtils.swift */,
 				9245F55C2068A29800CC45E2 /* sfunctional.h */,
@@ -198,7 +194,6 @@
 				9245F52F2068A19600CC45E2 /* SSZipArchive.h */,
 				9245F5302068A19600CC45E2 /* SSZipCommon.h */,
 				9245F5312068A19600CC45E2 /* SSZipArchive.m */,
-				9245F5322068A19600CC45E2 /* Info.plist */,
 			);
 			path = SSZipArchive;
 			sourceTree = "<group>";
@@ -344,7 +339,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9245F5592068A19600CC45E2 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,7 +523,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -552,7 +546,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rarnu.sfunctional;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

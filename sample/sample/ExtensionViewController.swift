@@ -19,10 +19,10 @@ class ExtensionViewController: UIViewController {
         
         // extension
         func makeButton(_ top: CGFloat, _ title: String, _ tag: Int) {
-            let btn = UIButton(type: UIButtonType.system)
+            let btn = UIButton(type: UIButton.ButtonType.system)
             btn.frame = CGRect(x: 8, y: top, width: screenWidth() - 16, height: 30)
-            btn.setTitle(title, for: UIControlState.normal)
-            btn.addTarget(self, action: #selector(btnClicked(_:)), for: UIControlEvents.touchDown)
+            btn.setTitle(title, for: UIControl.State.normal)
+            btn.addTarget(self, action: #selector(btnClicked(_:)), for: UIControl.Event.touchDown)
             btn.tag = tag
             self.view.addSubview(btn)
         }

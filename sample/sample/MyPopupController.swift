@@ -12,10 +12,10 @@ import sfunctional
 class MyPopupController: PopupViewController {
 
     override func layout(base: UIView) {
-        let btnClose = UIButton(type: UIButtonType.system)
+        let btnClose = UIButton(type: UIButton.ButtonType.system)
         btnClose.frame = CGRect(x: 8, y: 8, width: 80, height: 40)
-        btnClose.setTitle("Close", for: UIControlState.normal)
-        btnClose.addTarget(self, action: #selector(btnCloseClicked(_:)), for: UIControlEvents.touchDown)
+        btnClose.setTitle("Close", for: UIControl.State.normal)
+        btnClose.addTarget(self, action: #selector(btnCloseClicked(_:)), for: UIControl.Event.touchDown)
         base.addSubview(btnClose)
     }
     

@@ -26,11 +26,11 @@ class ImageViewController: UIViewController {
         top += 240 + 8
         
         func makeButton(_ t: CGFloat, _ title: String, _ tag: Int) {
-            let btn = UIButton(type: UIButtonType.system)
+            let btn = UIButton(type: UIButton.ButtonType.system)
             btn.frame = CGRect(x: 8, y: t, width: screenWidth() - 16, height: 30)
             btn.tag = tag
-            btn.setTitle(title, for: UIControlState.normal)
-            btn.addTarget(self, action: #selector(btnClicked(_:)), for: UIControlEvents.touchDown)
+            btn.setTitle(title, for: UIControl.State.normal)
+            btn.addTarget(self, action: #selector(btnClicked(_:)), for: UIControl.Event.touchDown)
             self.view.addSubview(btn)
         }
         
