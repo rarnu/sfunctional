@@ -10,7 +10,11 @@ import UIKit
 
 public extension NSObject {
     func thread(_ b:@escaping () -> Void) {
-        Thread.detachNewThread(b)
+        if #available(iOS 10, *) {
+            Thread.detachNewThread(b)
+        } else {
+            Thread.detachNewThreadSelector(self.selectorBlock(b), toTarget: self, with: nil)
+        }
     }
     func mainThread(_ b:@escaping () -> Void) {
         OperationQueue.main.addOperation(b)

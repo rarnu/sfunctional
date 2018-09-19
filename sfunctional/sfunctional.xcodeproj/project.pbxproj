@@ -56,6 +56,8 @@
 		9245F5652068E2E900CC45E2 /* ContextUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9245F5642068E2E900CC45E2 /* ContextUtils.swift */; };
 		9245F5672068EDBF00CC45E2 /* DownloadUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9245F5662068EDBF00CC45E2 /* DownloadUtils.swift */; };
 		9245F5692068F3E900CC45E2 /* FileUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9245F5682068F3E900CC45E2 /* FileUtils.swift */; };
+		924DE84B215201C30011FD81 /* SelectorBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = 924DE849215201C30011FD81 /* SelectorBlock.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		924DE84C215201C30011FD81 /* SelectorBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 924DE84A215201C30011FD81 /* SelectorBlock.m */; };
 		9286CADA2148AB330074C02A /* RegExUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9286CAD92148AB330074C02A /* RegExUtils.swift */; };
 		928C3439214796EC006C59F5 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928C3438214796EC006C59F5 /* PopupViewController.swift */; };
 		92C75D1720FF1C5E00AE8AD5 /* TableViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C75D1620FF1C5E00AE8AD5 /* TableViewAdapter.swift */; };
@@ -116,6 +118,8 @@
 		9245F5642068E2E900CC45E2 /* ContextUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextUtils.swift; sourceTree = "<group>"; };
 		9245F5662068EDBF00CC45E2 /* DownloadUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadUtils.swift; sourceTree = "<group>"; };
 		9245F5682068F3E900CC45E2 /* FileUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtils.swift; sourceTree = "<group>"; };
+		924DE849215201C30011FD81 /* SelectorBlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectorBlock.h; sourceTree = "<group>"; };
+		924DE84A215201C30011FD81 /* SelectorBlock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectorBlock.m; sourceTree = "<group>"; };
 		9286CAD92148AB330074C02A /* RegExUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegExUtils.swift; sourceTree = "<group>"; };
 		928C3438214796EC006C59F5 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		92C75D1620FF1C5E00AE8AD5 /* TableViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewAdapter.swift; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 		9245F4F82068954300CC45E2 /* sfunctional */ = {
 			isa = PBXGroup;
 			children = (
+				924DE848215201A90011FD81 /* SelBlock */,
 				9209255A206A8F1000E61D60 /* SysEmu */,
 				9245F5092068A19600CC45E2 /* SSZipArchive */,
 				9245F507206898FC00CC45E2 /* Extensions.swift */,
@@ -247,6 +252,15 @@
 			path = aes;
 			sourceTree = "<group>";
 		};
+		924DE848215201A90011FD81 /* SelBlock */ = {
+			isa = PBXGroup;
+			children = (
+				924DE849215201C30011FD81 /* SelectorBlock.h */,
+				924DE84A215201C30011FD81 /* SelectorBlock.m */,
+			);
+			path = SelBlock;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -257,6 +271,7 @@
 				9245F55D2068A38500CC45E2 /* sfunctional.h in Headers */,
 				9245F5562068A19600CC45E2 /* SSZipArchive.h in Headers */,
 				9209255D206A8F2000E61D60 /* SysEmu.h in Headers */,
+				924DE84B215201C30011FD81 /* SelectorBlock.h in Headers */,
 				9245F5572068A19600CC45E2 /* SSZipCommon.h in Headers */,
 				9245F5402068A19600CC45E2 /* ioapi.h in Headers */,
 				9245F5552068A19600CC45E2 /* fileenc.h in Headers */,
@@ -365,6 +380,7 @@
 				9245F5452068A19600CC45E2 /* hmac.c in Sources */,
 				9245F5692068F3E900CC45E2 /* FileUtils.swift in Sources */,
 				92C75D1720FF1C5E00AE8AD5 /* TableViewAdapter.swift in Sources */,
+				924DE84C215201C30011FD81 /* SelectorBlock.m in Sources */,
 				9245F5492068A19600CC45E2 /* fileenc.c in Sources */,
 				92D9447C2069F71200511EA2 /* ImageUtils.swift in Sources */,
 				9209255E206A8F2100E61D60 /* SysEmu.m in Sources */,
@@ -517,7 +533,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = sfunctional/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rarnu.sfunctional;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -540,7 +556,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = sfunctional/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rarnu.sfunctional;

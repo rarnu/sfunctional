@@ -88,6 +88,7 @@ open class AdapterTableView<T>: UITableView, UITableViewDelegate, UITableViewDat
         }
     }
     
+    @available(iOS 10, *)
     public func pulldownRefresh(_ enabled: Bool, base: String = "Pulldown to refresh", refreshing: String = "Refreshing...") {
         refreshText = base
         refreshingText = refreshing
@@ -101,6 +102,7 @@ open class AdapterTableView<T>: UITableView, UITableViewDelegate, UITableViewDat
         }
     }
     
+    @available(iOS 10, *)
     @objc private func onRefresh(_ sender: Any?) {
         if (self.refreshControl != nil) {
             if (self.refreshControl!.isRefreshing) {

@@ -20,7 +20,9 @@ class AdapterTableViewController: UIViewController, AdapterTableViewDelegate, Ad
         let tb = MyTable(frame: CGRect(x: 0, y: 0, width: screenWidth(), height: screenHeight() - 120))
         tb.adapterDelegate = self
         tb.refreshDelegate = self
-        tb.pulldownRefresh(true)
+        if #available(iOS 10, *) {
+            tb.pulldownRefresh(true)
+        }
         self.view.addSubview(tb)
         tb.assignList(arr: arr)
         tb.reloadData()
