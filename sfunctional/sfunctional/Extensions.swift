@@ -46,6 +46,12 @@ public extension String {
         tmp = String(tmp[tmp.index(tmp.startIndex, offsetBy: start)..<tmp.index(tmp.startIndex, offsetBy: start + length)])
         return tmp
     }
+    
+    func charAt(index: Int) -> String {
+        var tmp = self
+        tmp = String(tmp[tmp.index(tmp.startIndex, offsetBy: index)..<tmp.index(tmp.startIndex, offsetBy: index + 1)])
+        return tmp
+    }
 
     func indexOf(sub: String) -> Int {
         var i = -1

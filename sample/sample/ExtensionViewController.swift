@@ -80,6 +80,9 @@ class ExtensionViewController: UIViewController {
              s = "a,,bc,,def,,ghij"
              s = s.trim(c:["i", "j", "a"])
              addConsoleLog(s)
+             s = "abcdefg"
+             s = s.charAt(index: 1)
+             addConsoleLog("charAt => \(s)")
             break
         case 1:
             let c = UIColor().parseString("#FF0000")
