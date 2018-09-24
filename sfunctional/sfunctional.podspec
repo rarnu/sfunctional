@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name          = "sfunctional"
-    s.version       = "0.7.0"
+    s.version       = "0.7.1"
     s.summary       = "functional library for swift"
     s.homepage      = "https://github.com/rarnu/sfunctional"
     s.license       = "MIT"
