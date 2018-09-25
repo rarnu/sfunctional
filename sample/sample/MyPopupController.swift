@@ -12,6 +12,7 @@ import sfunctional
 class MyPopupController: PopupViewController {
 
     override func layout(base: UIView) {
+        print("Base.width => \(base.frame.width), Base.height => \(base.frame.height)")
         let btnClose = UIButton(type: UIButton.ButtonType.system)
         btnClose.frame = CGRect(x: 8, y: 8, width: 80, height: 40)
         btnClose.setTitle("Close", for: UIControl.State.normal)
@@ -22,5 +23,4 @@ class MyPopupController: PopupViewController {
     @objc func btnCloseClicked(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
-
 }

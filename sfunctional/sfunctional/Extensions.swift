@@ -88,7 +88,6 @@ public extension String {
             i = -1
         }
         return i
-        
     }
     
     mutating func trim() -> String {
@@ -153,9 +152,6 @@ public extension UIColor {
 }
 
 public extension UIView {
-    func toast(msg: String) {
-        Toast.showToast(message: msg as NSString?)
-    }
     
     func viewController() -> UIViewController? {
         var result: UIViewController? = nil
@@ -181,6 +177,7 @@ public extension UIView {
 }
 
 public extension UIViewController {
+    
     func navigationbarHeight() -> CGFloat {
         let h = navigationController?.navigationBar.frame.size.height
         return (h == nil) ? 0 : h!

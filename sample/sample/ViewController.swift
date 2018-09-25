@@ -353,7 +353,7 @@ class ViewController: UIViewController, AdapterTableViewDelegate {
     // TOAST
     // ===========================================================
     private func sampleToast() {
-        self.view.toast(msg: "Sample Toast")
+        toast(msg: "Sample Toast")
     }
 
     // ===========================================================
@@ -433,7 +433,7 @@ class ViewController: UIViewController, AdapterTableViewDelegate {
     // ===========================================================
     
     private func samplePopupViewController() {
-        let vc = MyPopupController(width: 500, height: 300, alpha: 0.5)
+        let vc = MyPopupController(width: screenWidth() * 0.8, height: 300, alpha: 0.5)
         self.present(vc, animated: true, completion: nil)
     }
 
