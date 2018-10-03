@@ -89,28 +89,28 @@ class ExtensionViewController: UIViewController {
             addConsoleLog("\(c)")
             break
         case 2:
-            alert(title: "title", message: "message", btn: "ok") {
+            alert(title: "title", message: "message", btn: "ok", isDark: true) {
                 self.addConsoleLog("ok clicked")
             }
             break
         case 3:
-            alert(title: "title", message: "message", btn1: "ok", btn2: "cancel") { which in
+            alert(title: "title", message: "message", btn1: "ok", btn2: "cancel", isDark: true) { which in
                 self.addConsoleLog("clicked \(which)")
             }
             break
         case 4:
-            alert(title: "title", message: "message", btn1: "btn1", btn2: "btn2", btn3: "btn3") { which in
+            alert(title: "title", message: "message", btn1: "btn1", btn2: "btn2", btn3: "btn3", isDark: true) { which in
                 self.addConsoleLog("clicked \(which)")
             }
             break
         case 5:
-            alert(title: "title", message: "message", btn1: "ok", btn2: "cancel", placeholder: "input text", initText: "") { (which, text) in
+            alert(title: "title", message: "message", btn1: "ok", btn2: "cancel", placeholder: "input text", initText: "", isDark: true) { (which, text) in
                 self.addConsoleLog("clicked \(which)")
                 self.addConsoleLog("text :\(text!)")
             }
             break
         case 6:
-            alert(title: "title", message: "message", btn1: "ok", btn2: "cancel", placeholder1: "account", placeholder2: "password", initText1: "", initText2: "") { (which, text1, text2) in
+            alert(title: "title", message: "message", btn1: "ok", btn2: "cancel", placeholder1: "account", placeholder2: "password", initText1: "", initText2: "", isDark: true) { (which, text1, text2) in
                 self.addConsoleLog("clicked \(which)")
                 self.addConsoleLog("text1 :\(text1!)")
                 self.addConsoleLog("text2 :\(text2!)")
