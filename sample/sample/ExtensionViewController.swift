@@ -16,6 +16,7 @@ class ExtensionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Extension"
+        self.view.backgroundColor = UIColor.darkThemeColor
         
         // extension
         func makeButton(_ top: CGFloat, _ title: String, _ tag: Int) {

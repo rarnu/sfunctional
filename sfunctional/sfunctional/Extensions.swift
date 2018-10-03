@@ -126,6 +126,9 @@ public extension String {
 }
 
 public extension UIColor {
+    
+    public static let darkThemeColor = UIColor().parseString("#3B3F41")
+    
     func parseString(_ colorStr: String) -> UIColor {
         var color = UIColor.red
         var cStr : String = colorStr.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
@@ -193,9 +196,9 @@ public extension UIViewController {
             let sub = a.view.subviews.first! as UIView
             let acv = sub.subviews.first! as UIView
             for v in acv.subviews {
-                v.backgroundColor = UIColor.lightGray
+                v.backgroundColor = UIColor.darkThemeColor
             }
-            acv.backgroundColor = UIColor.darkGray
+            acv.backgroundColor = UIColor.darkThemeColor
             acv.layer.cornerRadius = 15
             acv.tintColor = UIColor.white
             let aStr = NSMutableAttributedString(string: title)
@@ -218,9 +221,9 @@ public extension UIViewController {
             let sub = a.view.subviews.first! as UIView
             let acv = sub.subviews.first! as UIView
             for v in acv.subviews {
-                v.backgroundColor = UIColor.lightGray
+                v.backgroundColor = UIColor.darkThemeColor
             }
-            acv.backgroundColor = UIColor.darkGray
+            acv.backgroundColor = UIColor.darkThemeColor
             acv.layer.cornerRadius = 15
             acv.tintColor = UIColor.white
             let aStr = NSMutableAttributedString(string: title)
@@ -246,9 +249,9 @@ public extension UIViewController {
             let sub = a.view.subviews.first! as UIView
             let acv = sub.subviews.first! as UIView
             for v in acv.subviews {
-                v.backgroundColor = UIColor.lightGray
+                v.backgroundColor = UIColor.darkThemeColor
             }
-            acv.backgroundColor = UIColor.darkGray
+            acv.backgroundColor = UIColor.darkThemeColor
             acv.layer.cornerRadius = 15
             acv.tintColor = UIColor.white
             let aStr = NSMutableAttributedString(string: title)
@@ -277,9 +280,9 @@ public extension UIViewController {
             let sub = a.view.subviews.first! as UIView
             let acv = sub.subviews.first! as UIView
             for v in acv.subviews {
-                v.backgroundColor = UIColor.lightGray
+                v.backgroundColor = UIColor.darkThemeColor
             }
-            acv.backgroundColor = UIColor.darkGray
+            acv.backgroundColor = UIColor.darkThemeColor
             acv.layer.cornerRadius = 15
             acv.tintColor = UIColor.white
             let aStr = NSMutableAttributedString(string: title)
@@ -307,10 +310,10 @@ public extension UIViewController {
                     let ev = c?.superview?.subviews[0]
                     
                     if (ev != nil && ev is UIVisualEffectView) {
-                        c?.backgroundColor = UIColor.lightGray
+                        c?.backgroundColor = UIColor.darkGray
                         ev?.removeFromSuperview()
                     }
-                    tf.backgroundColor = UIColor.lightGray
+                    tf.backgroundColor = UIColor.darkGray
                     let phStr = NSMutableAttributedString(string: placeholder)
                     phStr.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: placeholder.count))
                     tf.attributedPlaceholder = phStr
@@ -326,9 +329,9 @@ public extension UIViewController {
             let sub = a.view.subviews.first! as UIView
             let acv = sub.subviews.first! as UIView
             for v in acv.subviews {
-                v.backgroundColor = UIColor.lightGray
+                v.backgroundColor = UIColor.darkThemeColor
             }
-            acv.backgroundColor = UIColor.darkGray
+            acv.backgroundColor = UIColor.darkThemeColor
             acv.layer.cornerRadius = 15
             acv.tintColor = UIColor.white
             let aStr = NSMutableAttributedString(string: title)
@@ -370,10 +373,10 @@ public extension UIViewController {
                     let ev = c?.superview?.subviews[0]
                     
                     if (ev != nil && ev is UIVisualEffectView) {
-                        c?.backgroundColor = UIColor.lightGray
+                        c?.backgroundColor = UIColor.darkGray
                         ev?.removeFromSuperview()
                     }
-                    tf.backgroundColor = UIColor.lightGray
+                    tf.backgroundColor = UIColor.darkGray
                     tf.textColor = UIColor.white
                 }
             }
