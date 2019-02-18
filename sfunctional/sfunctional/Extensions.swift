@@ -23,25 +23,25 @@ public extension NSObject {
 
 public extension String {
 
-    mutating func insert(idx: Int, sub: String) -> String {
+    func insert(idx: Int, sub: String) -> String {
         var tmp = self
         tmp.insert(contentsOf: sub, at: tmp.index(tmp.startIndex, offsetBy: idx))
         return tmp
     }
     
-    mutating func remove(idx: Int, length: Int) -> String {
+    func remove(idx: Int, length: Int) -> String {
         var tmp = self
         tmp.removeSubrange(tmp.index(tmp.startIndex, offsetBy: idx)..<tmp.index(tmp.startIndex, offsetBy: idx + length))
         return tmp
     }
     
-    mutating func sub(start: Int) -> String {
+    func sub(start: Int) -> String {
         var tmp = self
         tmp = String(tmp[tmp.index(tmp.startIndex, offsetBy: start)...])
         return tmp
     }
     
-    mutating func sub(start: Int, length: Int) -> String {
+    func sub(start: Int, length: Int) -> String {
         var tmp = self
         tmp = String(tmp[tmp.index(tmp.startIndex, offsetBy: start)..<tmp.index(tmp.startIndex, offsetBy: start + length)])
         return tmp
@@ -75,7 +75,7 @@ public extension String {
     
     func lastIndexOf(sub: String) -> Int {
         var i = self.count - sub.count
-        var tmp = self
+        let tmp = self
         var found = false
         while (!found) && (i > 0) {
             if (tmp.sub(start: i, length: sub.count) == sub) {
@@ -127,9 +127,9 @@ public extension String {
 
 public extension UIColor {
     
-    public static let darkThemeColor = UIColor().parseString("#3B3F41")
+    public static let darkThemeColor = UIColor.parseString("#3B3F41")
     
-    func parseString(_ colorStr: String) -> UIColor {
+    public static func parseString(_ colorStr: String) -> UIColor {
         var color = UIColor.red
         var cStr : String = colorStr.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
         if cStr.hasPrefix("#") {

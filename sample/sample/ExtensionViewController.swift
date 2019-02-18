@@ -86,7 +86,7 @@ class ExtensionViewController: UIViewController {
              addConsoleLog("charAt => \(s)")
             break
         case 1:
-            let c = UIColor().parseString("#FF0000")
+            let c = UIColor.parseString("#FF0000")
             addConsoleLog("\(c)")
             break
         case 2:
