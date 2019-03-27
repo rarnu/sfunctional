@@ -12,7 +12,11 @@ use_frameworks!
 pod 'sfunctional'
 ```
 
-for ```swift 4```, use version ```0.5.4``` and version ```0.8.0``` is for ```swift 4.2```.
+| Swift Version | sfunctional Version |
+| :-- | :-- |
+| 4 | 0.5.4 |
+| 4.2 | 0.8.0 |
+| 5 | 0.9.0 |
 
 #### Try this
 
@@ -43,4 +47,17 @@ download(url, documentPath(true) + "a.png") { (state, position, fileSize, error)
         print("Download Error => \(error!)")
     }
 }
+
+s = s.insert(idx: 2, sub: "a")
+s = s.remove(idx: 2, length: 3)
+s = s.sub(start: 3)
+s = s.sub(start: 3, length: 2)
+idx = s.indexOf(sub: "d")
+idx = s.indexOf(sub: "d", start: 6)
+idx = s.lastIndexOf(sub: "d")
+sarr = s.split(by: ",")
+s = s.trim(c:["i", "j", "a"])
+s = s.charAt(index: 1)
 ```
+
+
