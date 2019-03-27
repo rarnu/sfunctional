@@ -57,7 +57,7 @@ public extension String {
         var i = -1
         let r = self.range(of: sub)
         if (r != nil) {
-            i = r!.lowerBound.encodedOffset
+            i = r!.lowerBound.utf16Offset(in: sub)
         }
         return i
     }
@@ -127,9 +127,9 @@ public extension String {
 
 public extension UIColor {
     
-    public static let darkThemeColor = UIColor.parseString("#3B3F41")
+    static let darkThemeColor = UIColor.parseString("#3B3F41")
     
-    public static func parseString(_ colorStr: String) -> UIColor {
+    static func parseString(_ colorStr: String) -> UIColor {
         var color = UIColor.red
         var cStr : String = colorStr.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
         if cStr.hasPrefix("#") {
